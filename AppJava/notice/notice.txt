@@ -1,0 +1,366 @@
+- com.text <<클래스 만들기, 메소드 호출해보기 >>
+
+- 메소드 선언 및 호출
+	- 접근제한자 static 리턴데이터타입 userName(){}
+	- 리턴데이터타입 [7가지 자료형과 참조자료형 return 키워드 / void ]
+	- 호출 클래스명.메소드
+	- public static void UserName(매개인자*){}
+	- public static datatype UserName(매개인자*){
+		return datatype_ value;
+	}
+	
+
+- com.sec01 <<기본자료형, 값>>
+ DataType.java -- boolean 타입 확인
+ 
+- com.sec02.exam
+Wrapper class : 기본 데이터 타입(primitive type)을 객체로 다루기 위해 제공되는 클래
+Boxing :  기본형 -> 래퍼 객체 변환(Integer.valueOf(10))
+UnBoxing : 래퍼 객체 -> 기본형 반환 (obj.intValue())
+Auto-Boxing : Integer obj = 10; (자동변환)
+Auto-Unboxing : int num = obj;(자동변환)
+
+- BitOperator.java
+진리지표확인, 각 래퍼클래스의 변환메소드 확인, String.format(), 비트 자리수 표현, 정수, 실수 각각
+리턴변환 메소드 API확인
+Nan 처리하는 메소드 확인 
+
+ 
+ - com.sec03 클래스 선언, 생성, 멤버 호출
+class     - userDataType : 자주 사용하는 변수와 메소드를 하나의 이름으로 등록해서 필요할때마다 생성해서 사용하는것
+          - 선언된 멤버변수는 은닉하고 오픈된 메소드를 통해
+          값 전달 및 변경(setter)하는 리턴하는 구조(getter)를 가진다. 
+          - class 멤버 = 필드 + 메소드
+          
+          [선언방법]
+          접근제한자 [abstract] class userName{
+          	필드 + 메소드
+          }	
+ex) 정수 두 수를 관리하는 Test클래스를 만드어 보자
+class Test{
+	private int a;
+	private int b;
+	
+	//setter - void
+	public void setA(int a){
+		this.a = a; //전달 및 변경
+	}
+	public void seB(int b){
+		this.b = b; //전달 및 변경
+	}
+	
+	//getter
+	public int getA(){
+		return a;
+	}
+	public int getB(){
+		return b;
+	}
+}          
+
+오버로딩(Overloading) : 하나의 클래스 내에서 같은 이름의 메서드를 {매개변수 개수, 타입을 다르게} 여러 개 정의하는것
+	목적 : 같은 기능을 다양한 입력값에 적용
+오버라이딩(Overriding) : 상속시 부모 클래스의 메서드를 자식 클래스에서 {메서드명, 매개변수, 반환타입을 동일} 재정의하는 것
+	목적 : 부모클래스의 동작을 자식 클래스에서 변경해서 기능에 사용함 
+          
+- 생성자
+	- 클래스 이름과 동일하되 반환형은 없다
+	- 오버로드 할수 있다
+	- 생성자는 객체를 생성할 때 단 한번만 호출된다
+	- 메서드처럼 명시호출 할 수 없다
+	- 생성자는 상속 되지 않으면 객체를 생성할 때 단한번만 호출되어 메모리 할당된다
+	- 생성자를 명시하지 않으면 기본 생성자가 호출되고 명시하면 명시된 생성자가 호출된다
+	- 생성자는 멤버변수 초기화를 목적으로 한다 
+	
+================================================================================================== 
+ com.sec07.mytest
+ - 단일 상속
+ - getRes() 재정의 개념
+ - 상속관계 기본 생성자, 오버로딩 생성자 추가
+ - 객체와 주소간의 영역 제한
+ - 동적바인딩. 캐스팅 
+ - API를 확인 후 [상속구조, 필드, 메소드, 생성자등] , 단일 상속을 받자
+          
+ com.sec07.mytest01
+ has-a 관계도 확인 : 클래스가 다른 클래스의 객체를 포함함
+ class my제어판{
+ 	private java.io.File myfile:
+ }
+ is-a 관계 : 클래스가 다른 클래스를 상속받음 
+ class my extends File{}
+================================================================================================== 
+ 다이어그램설치
+ 
+ com.sec09 예외처리
+ 1) try~catch : 예외를 직접 처리하는 구문 
+ 2) finally : 예외발생 유무와 관계 없이 실행됨 -> 무조건 실행되는 코드를 작성함  
+ 3) throws : 메소드 뒤에 선언되며 호출하는 곳으로 예외처리 위임 
+ 4) throw : 예외 클래스를 명시 실행 
+ 5) try-with-resources : finally없이 자동 리소스 해제
+ 
+ ================================================================================================== 
+ case 1 : 
+ 		try{
+ 			예외가 발생될 코드
+ 		}catch(Exception e){}
+ 
+ case 2 :
+ 		try{
+ 		}catch(ArithmeticException name){
+ 		}catch(RunTimeException name){
+ 		}catch(Exception name){}
+    
+ case 3 : 
+ 		try{
+ 		}finally{}
+ 		
+ case 4 :
+ 		try{
+ 		}catch(ArithmeticException name){
+ 		}catch(RunTimeException name){
+ 		}catch(Exception name){
+ 		}finally{
+ 		}
+ 		
+ case 5 : try-with-resources : 자동으로 close() 호출하면서 참조한 리소스 소멸 
+ 	//finally가 없고 괄호 부분이 자동 실행되는 것 
+ 	try(FileReader fr = new FileReader(path);
+ 		BufferedReader br = new BufferedReader(fr)){
+ 		return br.readLine();
+ 		}
+ 
+================================================================================================== 
+
+com.sec10
+
+- String은 불변 객체이므로 연결 연산이 많을수록 성능 떨어짐
+- StringBuffer와 StringBuilder는 가변 객체로 문자열 변경이 많을때 성능이 더 좋음
+- StringBuffer는 멀티쓰레드 환경에서 안전하지만, StringBuilder보다 느림
+- StrigBuilder는 싱글쓰레드 환경에서 가장 빠른 성능 제공 
+
+com.sec10.myreflect
+1. import java.lang.reflect : 실행중에 클래스, 메소드, 필드 생성자등의 정보를 **동적으로 조회**하고
+							조작할 수 있는 기능을 제공하는 API
+
+- 클래스, 메소드, 필드 생성자등의 정보를 동적으로 조회함
+- private 필드 메소드 접근 가능 
+- 프레임워크(Spring, SpringBoot, ORM)에서 객체를 동적으로 생성함
+- @랑 함께 사용하면 런타임 조직이 확정가
+- 런타임 중에 특정메소드 실행 -> invoke() 
+
+2. 어노테이션의 목적과 기본 사용법을 이해하고 커스텀 어노테이션을 정의하여 코드에 메타데이터를 추가해 활용할 수 있음
+- 컴파일시에 정보 제공 -> 문법 또는 오류 체크
+- 빌드 배포 시에 사용됨 -> 코드 자동 생성됨
+- 런타임 동작 제어 -> 프로그램 실행시 특정 기능을 수행하도록 할 때
+* 자동화코드 생성, 테스트, 디버깅등의 기능을 수행함  
+ 
+================================================================================================== 
+  
+com.sec11.myutil
+    
+제네릭스(Generics)는 컴파일 시 타입을 체크하고, 다양한 데이터 타입을 처리할 수 있도록 도와주는 기능
+제네릭 클래스(Generic Class) : 특정 타입을 지정하지 않고, 여러 타입의 데이터를 저장할 수 있는 클래스
+T를 사용해 다양한 타입을 받을 수 있다 
+class Test<T> {}-제네릭 메서드(Generic Method) : 특정 메서드에서만 제네릭 타입을 적용하는 방법
+                 public static <T> void print(T item) {
+                           System.out.println(item);}
+와일드카드(Generics Wildcard)  : 유연한  타입을 허용
+           List<? extends T>    T와 T의 하위 클래스만 허용 (상한 제한)
+           List<? super T>    T와 T의 상위 클래스만 허용 (하한 제한)
+           
+           
+ ================================================================================================== 
+ 
+ 1) 람다식의 주요특징 -> 함수형 인터페이스
+익명 함수(Anonymous Function) 이름 없이 사용되는 함수로 함수형 인터페이스의 변수에 할당 가능.
+함수형 인터페이스 : 하나의 추상 메소드만을 가지는 인터페이를 말한다. -> @FunctionalInterface
+람다식은 단 하나의 추상 메소드만을 가지는 함수형 인터페이스에서만 사용 가능하다.(default,static 메소드는 여러 개 가질 수 있다.)
+간결한 코드 구조로 기존의 익명 클래스를 람다식을 사용하여 간단하게 표현할 수 있다.
+자바 컴파일러가 문맥을 보고 타입을 자동으로 추론한다.
+6 .java.util.function 패키지에는 다양한 기본 함수형 인터페이스
+(Function : 입력값을 받아서 가공한 후 다른 타입으로 변환하여 반환하는 인터페이스 R apply(T t), 
+ Predicate: 입력값을 받아서 조건을 체크한 후 true 또는 false를 반환하는 인터페이스 boolean test(T t),
+  Consumer :  입력값을 받아서 특정 작업을 수행하고 반환값이 없는 인터페이스 void accept(T t),
+  Supplier : 입력값 없이 값을 생성하여 반환하는 인터페이스  T get())가 제공된다. 
+
+[람다 표현식 ]
+lambda 표현식은 익명으로 처리되어 이름이 없다.
+lambda 표현식은 compiler 가 context 에 맞는 타입을 유추하기 때문에 return type이없다.
+lambda 표현식은 compiler 가 context 에서 유추되어 throws clause 가 없다.)
+lambda 표현식은 람다 표현식은 Generic 이 될 수 없어 type 파라미터를 선언할 수없다.
+
+[형식] 
+(int x, int y) -> { return x + y; }   // 기존 방식
+(x, y) -> x + y   // 타입 생략 가능
+
+case1 :  매개변수가 없는 경우
+() -> System.out.println("Hello World!");
+
+case2:  매개변수가 하나인 경우
+x -> x * x;
+
+case 3: 매개변수가 여러 개인 경우
+(x, y) -> x + y;
+
+case4  실행문이 여러 개일 경우
+(x, y) -> {
+    int sum = x + y;
+    return sum;
+
+  [다양한 형식]
+  형식에 정의된 구문은 매개인자에 따라 괄호 () , 중괄호{}가 생략가능하다. 
+ >> 매개인자로 su 을 받아 출력 하는 구문
+    (int su) -> { System.out.println(su); }
+ >>  자료형이 생략 가능하다.
+ (su) -> { System.out.println(su); }
+>>  매개인자 하나일경우 (), {}생략 가능하다
+ su -> System.out.println(su);
+
+>> 매개인자 없는 경우 빈 괄호()만 사용하여 명령 실행할 수 있다.
+ ()->{ System.out.println('a')}
+
+>> 매개인자 두 개 이상 이면 자료형 생략 하여 실행한다.
+(a, b) -> { return a + b; }
+
+
+>>매개인자 두 개이상이면 {}와 return 키워드를 생략해서 사용한다
+(a, b) -> a + b;
+           
+
+================================================================================================== 
+
+2. Stream API  데이터 집합을 효과적으로 처리할 수 있는 API로 필터링, 그룹핑등 가능하다. 
+
+1) Stream 연산순서 
+     (1)생성 :Collection.stream(): 요소를 기준으로 생성
+      		 Stream.of(T...values) : 값을 기준으로 스트림 생성 , 
+      		 Arrays.stream() : 배열객체를 기준으로 스트림 생성
+     -> 데이터 처리를 쉽게 하기위함. (빠른건X. 안빠른거있음)
+     (2)중간 연산 (Intermediate Operation): -> 중간에 조건 연산
+        filter(), map(), sorted(), distinct(), limit(), flatMap() 등
+        중간 연산은 스트림을 변환하는 작업을 수행하며, 최종 연산이 호출될 때 실행된다
+     (3)최종 연산 (Terminal Operation)
+       forEach(), collect(), reduce(), count(), sum(), min(), max() 등 -> 집계 결과 
+        최종 연산이 수행되면 스트림이 소비되며, 이후에는 다시 사용할 수 없다
+
+2)Stream 주요 연산
+map()    : 요소 변환 -> Stream<R> map(Function<T,R> mapper) -> R apply(T t)
+			형변환(String::valueOf), 문자열 소대문자변환(String::upperCase), 객체에서 String map(person -> person.name)
+			mapToObj
+filter()     :조건에 맞는 요소만 선택
+sorted()     : 정렬 수행
+reduce()     : 누적 연산 수행 BiFunction<T,U,R> 
+collect(): 리스트, 맵 등으로 변환
+peek() : 변환 작업을 할 때 테스트 용으로 사용됨           
+-> map, reduct 함수로 집계 연산을 많이 함 
+
+3.병렬 처리parallelStream()을 활용하면 데이터 병렬 처리가 가능하다
+           
+================================================================================================== 
+
+com.sec13.myio
+
+1. java.io (기본 I/O)
+스트림 기반: 데이터를 순차적인 스트림으로 처리.
+블로킹 I/O: 읽기/쓰기 작업이 완료될 때까지 스레드가 대기합.
+파일, 네트워크, 메모리 등 다양한 입출력 지원: 기본적인 파일 입출력, 네트워크 통신, 메모리 스트림 등을 처리.
+단순하고 사용하기 쉬움: 기본적인 입출력 작업을 처리하는 데 적합.
+
+byte -> 이미지, 영상 프로세싱때 사용됨 
+=> int read(byte[]) : byte
+=> write(byte)
+
+char -> 한글자, (char[] String)
+=> read(char)
+=> read(char[]_ readLine()
+=> write(char) write(char[])
+=> writeLine(String) 
+
+Object -> class
+=> readObject() 
+=> writeObject() 
+
+h_MyObject02.java 직렬화
+	- static : 직렬화 대상이 아님 -> 직렬화와 무관, 읽기 시점의 static 값 출력
+	- transient : 일시적 데이터로 직렬화 제외 -> 읽기 후 null로 출력
+	- serialVersionUID : 직렬화 버전 관리 -> 클래스 구조 변경시 사용 권장 
+
+
+2. java.nio (New I/O)
+버퍼 기반: 데이터를 버퍼에 저장하고 처리한다.
+논블로킹 I/O: 읽기/쓰기 작업이 완료되지 않아도 스레드가 다른 작업을 수행한다.
+채널과 셀렉터: 채널을 통해 입출력을 수행하고, 셀렉터를 사용하여 여러 채널을 효율적으로 관리
+고성능 I/O: 대규모 네트워크 애플리케이션 등 고성능 I/O가 필요한 경우에 적합하다. 
+
+3. java.nio.file (NIO.2)
+파일 시스템 API: 파일 및 디렉터리 작업을 위한 강력하고 유연한 API를 제공한다
+Path 인터페이스: 파일 경로를 추상화하여 플랫폼 독립적인 코드를 작성할 수 있도록 한다. 
+Files 클래스: 파일 복사, 이동, 삭제, 속성 관리 등 다양한 파일 시스템 작업을 지원한다.
+파일 시스템 작업에 특화: 파일 시스템 관련 작업을 보다 쉽고 효율적으로 처리한다.
+
+================================================================================================== 
+          
+com.sec13.myNio
+ 
+ b_FileCRUD.java
+BasicFileAttributes:    기본적인 파일 속성에 접근 (모든 파일 시스템 공통) ->      size(), creationTime(), lastAccessTime(), lastModifiedTime(), isDirectory(), isRegularFile(), isSymbolicLink(), isOther()
+DosFileAttributes    :Windows DOS 파일 시스템 속성에 접근    -> isReadOnly(), isHidden(), isArchive(), isSystem()
+PosixFileAttributes:    POSIX 호환 파일 시스템(Linux, macOS 등) 속성에 접근 ->    owner(), group(), permissions()
+AclFileAttributes:    액세스 제어 목록(ACL) 속성에 접근     -> getEntries()
+UserDefinedFileAttributes(Files 디렉토리꺼 사용) :    사용자 정의 파일 속성에 접근 ->     list(), read(String name, ByteBuffer dst), write(String name, ByteBuffer src)
+FileOwnerAttributeView     : 파일 소유자 속성에 접근 및 수정    -> getOwner(), setOwner(UserPrincipal owner)
+PosixFileAttributeView    POSIX : 파일 속성에 접근 및 수정    -> setPermissions(Set<PosixFilePermission> perms)
+AclFileAttributeView    : ACL 속성에 접근 및 수정    -> setAcl(List<AclEntry> aclList)
+UserDefinedFileAttributeView :    사용자 정의 파일 속성에 접근 및 수정 ->     delete(String name)
+FileStoreAttributeView     : 파일 저장소 속성에 접근    -> getTotalSpace(), getUsableSpace(), getUnallocatedSpace()           
+           
+           
+================================================================================================== 
+com.sec14
+1. 쿼리 CRUD를 활용한 코드 구현
+2. jdbc 인터페이스 흐름 확인 
+3. 매개인자 데이터 대입 확인
+
+================================================================================================== 
+com.sec15 : 
+1. JDBCTemplate 구현 후 호출 
+2. static import 호출 
+3. 프로시저 호출 IN, OUT, INOUT
+4. SQLTYPE 속성 타입 매핑     
+
+================================================================================================== 
+MVC 패턴 활용한 서비스 컴포넌트를 콘솔에서 실행
+create table if not exists person(
+	name varchar(50) primary key,
+    address varchar(100),
+    phone varchar(20)
+);
+
+
+MyPersonApp
+├── lib
+│   └── mysql-connector-j-9.1.0.jar
+└── src
+    └── com
+        └── person
+            ├── controller
+            │   └── PersonController.java  -- [7]
+            ├── dao
+            │   ├── PersonDao.java (I)     -- [4]
+            │   └── PersonDaoImpl.java (C)
+            ├── model
+            │   └── Person.java          -- [3]
+            ├── service
+            │   ├── PersonService.java (I) -- [5]
+            │   └── PersonServiceImpl.java (C)
+            ├── view
+            │   └── PersonConsolView.java  -- [6] 전체 출력 코드 / 알림코드
+            └── common
+                └── JDBCTemplate.java      -- [2]
+    └── db.properties                  -- [1]
+
+================================================================================================== 
+				 
+
+
+       
