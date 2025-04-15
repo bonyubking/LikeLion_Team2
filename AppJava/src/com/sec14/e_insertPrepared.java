@@ -15,12 +15,10 @@ public class e_insertPrepared {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String url = "jdbc:mysql://localhost:3306/my_emp";
-			String user = "mydb";
-			String password="chlwlgns9754@";
-//		    conn =
-//		       DriverManager.getConnection("jdbc:mysql://localhost:3306/my_emp?" +
-//		                                   "user=mydb&password=chlwlgns9754@");
+			String url = "";
+			String user = "";
+			String password="";
+
 		    conn = DriverManager.getConnection(url,user,password);
 
 		    if(!conn.isClosed()) {

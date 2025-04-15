@@ -10,7 +10,7 @@ import java.util.Properties;
 
 // DB 연결 생성, 자원 해제(Connection, Statement, ResultSet), 트랜잭션 처리(commit, rollback) 
 public class JDBCTemplate {
-
+	
 	// case 2: DB 연결_properties 파일로 로드하는 방법 
 	public static Connection getConnection() {
 		Connection conn = null;
