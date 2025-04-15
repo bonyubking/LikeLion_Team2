@@ -6,7 +6,14 @@ public class a_exam implements Runnable{
 	
 	@Override
 	public void run() {
-		System.out.println("스레드");
+		for(int i=0;i<=200;i++) {
+			System.out.println("스레드");
+			try {
+				Thread.sleep(2000);
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static void main(String[] args) {

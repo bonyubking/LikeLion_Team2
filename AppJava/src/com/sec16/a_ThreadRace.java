@@ -36,5 +36,22 @@ public class a_ThreadRace {
 
         thread1.start();
         thread2.start();
+        
+        /*
+         * Thread.start() -> JVM은 OS에 커널 스레드 요청 
+         * -> OS는 해당스레드를 스케쥴링 함 (시간할당, 우선순위 고려) 
+         * -> JVM은 각 Thread 객체에 Thread Stack를 할당
+         * -> 각 스레드는 독립적으로 Call Stack를 가짐 
+         * */
+        
+        /*
+         * JConsole
+         * Overview : CPU 사용량, Heap 메모리, 클래스수, 스레드수 확인 가능 
+         * Memory : GC 확인 가능. 전체 Heap의 15% 이상 차지하게 되면 메모리 조정  
+         * Threads : 스레드 목록, 상태 확인 
+         * Classes : 클래스 로딩 수, 메모리 점유량 확인 
+         * 	Vm Summary :JVM 기본 설정값(힙크기, GC 설정, 명령줄옵션)
+         * 	Mbeans : User가 등록한 프로세스를 관리하는 목적 -> 고급 모니터링 사용자 관리
+         * */
     }
 }
