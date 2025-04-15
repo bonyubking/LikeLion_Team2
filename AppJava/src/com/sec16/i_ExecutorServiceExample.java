@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 public class i_ExecutorServiceExample {
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(3); // 3개 스레드 풀
+        // 모든 작업 스레드가 작업을 실행 중일 때, 새로운 작업은 큐에 대기했다가 실행됨 
 
         for (int i = 1; i <= 5; i++) {
             int taskId = i;

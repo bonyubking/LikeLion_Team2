@@ -28,7 +28,7 @@ public class k_LockConditionExample {
             lock.lock();
             try {
                 ready = true;
-                condition.signal();
+                condition.signal(); //풀링에서 깨어나 스레드 시작 실행 신호 
                 System.out.println("📢 조건 신호 보냄");
             } finally {
                 lock.unlock();
