@@ -1,7 +1,6 @@
 package Workshop14.workshop;
 
 import static comm.JDBCTemplate.Close;
-import static comm.JDBCTemplate.commit;
 import static comm.JDBCTemplate.getConnection;
 import static comm.JDBCTemplate.rollback;
 
@@ -10,9 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.xdevapi.Statement;
-
-public class Test01 {
+public class Test02 {
 
 	public static void main(String[] args) {
 		Connection conn = getConnection();
@@ -20,22 +17,20 @@ public class Test01 {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "{call test01()}";
+			String sql = "{call test02()}";
 			cstmt = conn.prepareCall(sql);
 			
 			rs = cstmt.executeQuery();
 			
-			System.out.printf("%-8s %-10s %-10s %-5s %10s \n", "제품카테고리","제품명","공장명","판매점명","판매점재고수량");
-			System.out.println("--------------------------------------------------------------------------------");
+			System.out.printf("%-10s %-8s %-8s\n", "제품명","제품원가","제품가격");
+			System.out.println("-------------------------------");
 			
 			while(rs.next()) {
-				String pdname = rs.getString("PDNAME");
 				String pdsubname = rs.getString("PDSUBNAME");
-				String facname = rs.getString("FACNAME");
-				String stoname = rs.getString("STONAME");
-				int stamount = rs.getInt("STAMOUNT");
-				
-				System.out.printf("%-8s %-10s %-15s %-5s %10d \n", pdname, pdsubname, facname,stoname,stamount);
+				int pdcost = rs.getInt("PDCOST");
+				int pdprice = rs.getInt("PDPRICE");
+
+				System.out.printf("%-10s %-8d %-8d \n",pdsubname, pdcost,pdprice);
 			}
 
 		} catch (SQLException e) {
@@ -52,5 +47,7 @@ public class Test01 {
 				e.printStackTrace();
 			}	
 		}
+
 	}
+
 }

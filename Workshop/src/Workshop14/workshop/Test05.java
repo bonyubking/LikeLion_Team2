@@ -1,7 +1,6 @@
 package Workshop14.workshop;
 
 import static comm.JDBCTemplate.Close;
-import static comm.JDBCTemplate.commit;
 import static comm.JDBCTemplate.getConnection;
 import static comm.JDBCTemplate.rollback;
 
@@ -10,9 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.xdevapi.Statement;
-
-public class Test01 {
+public class Test05 {
 
 	public static void main(String[] args) {
 		Connection conn = getConnection();
@@ -20,23 +17,15 @@ public class Test01 {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "{call test01()}";
+			String sql = "{call test05(?)}";
 			cstmt = conn.prepareCall(sql);
 			
-			rs = cstmt.executeQuery();
+			cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
 			
-			System.out.printf("%-8s %-10s %-10s %-5s %10s \n", "제품카테고리","제품명","공장명","판매점명","판매점재고수량");
-			System.out.println("--------------------------------------------------------------------------------");
+			cstmt.executeUpdate();
+			int deletedCount = cstmt.getInt(1);
+			System.out.println(deletedCount+"개의 데이터가 정상적으로 DELETE 되었습니다.");
 			
-			while(rs.next()) {
-				String pdname = rs.getString("PDNAME");
-				String pdsubname = rs.getString("PDSUBNAME");
-				String facname = rs.getString("FACNAME");
-				String stoname = rs.getString("STONAME");
-				int stamount = rs.getInt("STAMOUNT");
-				
-				System.out.printf("%-8s %-10s %-15s %-5s %10d \n", pdname, pdsubname, facname,stoname,stamount);
-			}
 
 		} catch (SQLException e) {
 			// 오류가 발생했으므로 rollback 
@@ -52,5 +41,7 @@ public class Test01 {
 				e.printStackTrace();
 			}	
 		}
+
 	}
+
 }
