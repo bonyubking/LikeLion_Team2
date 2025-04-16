@@ -17,9 +17,19 @@ public class a_exam implements Runnable{
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("===========main start =========");
 		Thread t1 = new Thread(new a_exam(),"야옹이");
 		Thread t2 = new Thread(new a_exam(),"멍뭉이");
-		t1.start();
+		t1.start(); // 메소드단위 실행 = run() 
 		t2.start();
+		
+		System.out.println("===========main mid =========");
+		try {
+			t1.join();
+			t2.join();
+		}catch(InterruptedException i) {
+			System.out.println(i); // i.getStackTrace()
+		}
+		System.out.println("===========main end =========");
 	}
 }
