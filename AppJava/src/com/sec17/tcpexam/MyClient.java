@@ -6,30 +6,18 @@ import java.util.Scanner;
 
 public class MyClient {
     public static void main(String[] args) throws IOException {
-    	// 1. 서버와 통신을 위한 Socket 객체 생성. 이때 접속 요청할 서버의 IP 주소와 Port 번호를
-    	// 매개변수로 지정
-    	Socket socket = null;
-    	try {
-    		socket = new Socket("localhost",9999);
+    	// 1. 서버와 통신을 위한 Socket 객체 생성. 
+    	//이때 접속 요청할 서버의 IP 주소와 Port 번호를 매개변수로 지정
+    	try (Socket socket = new Socket("localhost",9999);
+    			// 2. Socket 객체로부터 서버와의 통신을 위한 InputStream을 얻음 
+    		BufferedReader br = 
+    				new BufferedReader(new InputStreamReader(socket.getInputStream(),"UTF-8"))){
     		System.out.println("클라이언트");
     		
-    		InputStream ios = socket.getInputStream();
-    		int r = 0;
-    		while((r=ios.read()) != -1) {
-    			System.out.print(r);
-    		}
-    		
-    		
+    		// 3. 생성된 InputStream을 이용하여 서버로부터 메세지를 읽음 
+    		System.out.println("서버가 준 메시지 : "+br.readLine());
     	}catch(UnknownHostException e) {
     		e.printStackTrace();
-    	}finally {
-    		try {
-    			socket.close();
-    		}catch(IOException e) {
-    			e.printStackTrace();
-    		}
     	}
-    	
-    	// 2.Socket 객체로부터 서버와의 통신을 위한 InputStream, OutputStream 
     }
 }
