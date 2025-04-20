@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.zip.*;
 
 //문자열 → ZIP 압축 → 파일 저장 
-public class a_zipCompression2{
+public class a_zipCompression{
     public static void main(String[] args) {
         String data = """
                 Hello, this is compressed content.
@@ -23,7 +23,10 @@ public class a_zipCompression2{
             //압축 항목 정의
             ZipEntry ze = new ZipEntry("a.txt");
             gzipOut.putNextEntry(ze);
+            
             writer.write(data);
+            writer.flush();
+            gzipOut.closeEntry();
             System.out.println(" 압축 완료: " + gzipFile.getAbsolutePath());
 
         } catch (IOException e) {

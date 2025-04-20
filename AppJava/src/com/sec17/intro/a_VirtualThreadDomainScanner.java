@@ -34,7 +34,7 @@ public class a_VirtualThreadDomainScanner {
         System.out.println("\n전체 완료 시간: " + (end - start) + "ms");
     }
 
-    private static void resolveDomain(String domain) {
+    private static void resolveDomain(String domain) { // 도메인 확인 후 IP 
         long startTime = System.nanoTime();
 
         try {

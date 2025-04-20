@@ -8,24 +8,20 @@ public class a_zipDecompression2 {
     public static void main(String[] args) {
         File gzipFile = new File("output.txt.zip");
 
-        try (FileInputStream fis = new FileInputStream(gzipFile);
-             ZipInputStream gzipIn = new ZipInputStream(fis)){
-        	
-        	ZipEntry entry = null;
-        	
-        	while((entry = gzipIn.getNextEntry())!= null){
-        		System.out.println("압축 해제 중"+entry.getName());
+        try(FileInputStream fis = new FileInputStream(gzipFile);
+        	ZipInputStream gzipIn = new ZipInputStream(fis);
         		
-        		InputStreamReader reader = new InputStreamReader(gzipIn, StandardCharsets.UTF_8);
-        		BufferedReader br = new BufferedReader(reader); 
-        		
-        		System.out.println(" 압축 해제된 내용:");
-        		String line;
-        		while ((line = br.readLine()) != null) {
-        			System.out.println(line);
-        		}
-        		gzipIn.closeEntry();
-        	}
+        	InputStreamReader reader = new InputStreamReader(gzipIn,StandardCharsets.UTF_8);
+        	BufferedReader br = new BufferedReader(reader)){
+        	
+        	ZipEntry entry = gzipIn.getNextEntry();
+        	
+        	System.out.println(" 압축 해제된 내용:");
+    		String line;
+    		while ((line = br.readLine()) != null) {
+    			System.out.println(line);
+    		}
+        	
         } catch (IOException e) {
             e.printStackTrace();
         }

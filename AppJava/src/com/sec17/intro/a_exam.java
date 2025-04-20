@@ -4,7 +4,7 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public interface a_exam {
+public class a_exam {
 	public static void main(String[] args) {
 		try {
 			InetAddress[] res = Inet4Address.getAllByName("www.python.org");
@@ -17,5 +17,4 @@ public interface a_exam {
 			e.printStackTrace();
 		}
 	}
-
 }

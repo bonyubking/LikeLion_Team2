@@ -1,7 +1,10 @@
 package com.sec17.tcpexam02;
 
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -24,6 +27,15 @@ public class MyServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    
+    private static void handleClient(Socket clientSocket) {
+    	try(clientSocket; OutputStream os = clientSocket.getOutputStream();
+    		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os,""))){
+    		writer.write("가상 스레드 서버 응답\n");
+    		writer.flush();
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
     }
 }

@@ -7,6 +7,16 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.*;
 import java.util.zip.GZIPInputStream;
 
+
+/*
+ * 웹페이지 요청 후 페이지를 다운로드 받아서 출력
+ * [1] 가상 스레드 
+ * [2] URL 주소 요청 openStream()
+ * [3] executor.awaitTermination(10,TimeUnit.SECONDS); // 10초후 완전히 종료 요청
+ * [4] GZIPInputStream() .gz 확정자 압축 파일 풀기 
+ * */
+
+
 public class a_intro {
 	public static void main(String[] args) throws InterruptedException {
 

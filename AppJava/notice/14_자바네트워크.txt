@@ -5,7 +5,7 @@
 [1] 자바 네트워크 개요
 
 URL : 찾아가는 경로[연결용] -> 접속 주소 -> 프로토콜+호스트+패스+포트+쿼리 
-URI : 식별하는 방식[분석용] -> 정의하는 방식
+URI : 식별하는 방식[분석용] -> 정의하는 방식 -> [scheme:]scheme-specific-part[#fragment]
 URL은 URI의 하위개념 (URI -> URL로 변환해서 사용됨)
 
 - 네트워크 프로그래밍이란?
@@ -32,7 +32,7 @@ executor.shutdown();
 
 --------------------------------------------------
 
-2. newFixedThreadPool(int n)
+2. newFixedThreadPool(int n) : CPU 바운드 
 
 - 고정된 스레드 개수(n)를 가진 스레드 풀 생성
 - n개의 작업까지 동시에 실행, 그 외 작업은 큐에서 대기
@@ -48,7 +48,7 @@ executor.shutdown();
 
 --------------------------------------------------
 
-3. newCachedThreadPool()
+3. newCachedThreadPool(): 필요할 때 무한 생성, 제거 
 
 - 작업이 들어올 때마다 새로운 스레드 생성
 - 일정 시간 미사용 스레드는 재활용
@@ -65,7 +65,7 @@ executor.shutdown();
 
 --------------------------------------------------
 
-4. newScheduledThreadPool(int n)
+4. newScheduledThreadPool(int n) -- Timer로 대체  
 
 - 예약 또는 주기적인 작업 실행 가능
 - n개의 스레드로 동시에 예약된 작업 수행
@@ -90,7 +90,7 @@ scheduler.schedule(() -> System.out.println("딱 한 번 2초 후 실행"), 2, T
 
 --------------------------------------------------
 
-6. newWorkStealingPool()
+6. newWorkStealingPool() -- 잘 사용하지 않음 
 
 - ForkJoinPool 기반의 고성능 병렬 처리 풀
 - 내부적으로 작업을 나누고, 남은 작업은 다른 스레드가 "훔쳐" 수행
@@ -140,15 +140,17 @@ executor.awaitTermination(5, TimeUnit.SECONDS);
 ================>   어떤걸 사용해야 할까?
 작업을 순서대로 하나씩 실행하고 싶을 때:	Executors.newSingleThreadExecutor()	
 동시에 일정 수의 작업만 처리하고 싶을 때 DB :	Executors.newFixedThreadPool(n)
+
 짧고 빠른 작업이 많은데 유동적으로 처리하고 싶을 때 :	Executors.newCachedThreadPool()	
 작업을 일정 시간 간격으로 반복 실행하고 싶을 때:	Executors.newScheduledThreadPool(n)	
 예약 작업을 단 하나의 스레드에서 순서대로 실행해야 할 때	: Executors.newSingleThreadScheduledExecutor()	
+
 CPU 코어 수에 따라 병렬 분할 처리하고 싶을 때:	Executors.newWorkStealingPool()	
 수십만 개의 작업을 동시에 안전하게 처리하고 싶을 때 (I/O 중심):	Executors.newVirtualThreadPerTaskExecutor()
 
 
 ───────────────────────────────────────────────
-
+데이터 단방향/양방향 블로킹 유무 
 [2] TCP 통신 구조
 
 - Server 흐름
@@ -246,3 +248,10 @@ CPU 코어 수에 따라 병렬 분할 처리하고 싶을 때:	Executors.newWor
 블로킹: 연결 대기 중 스레드 정지되고 클라이언트마다 스레드 필요, 자원 낭비, 연결 수 증가에 한계가 있다.
 NIO: 여러 연결을 동시에 감지하고 이벤트 발생 시 처리하므로 적은 스레드로 효율적이며 대규모 연결에 적합하다.
 VirtualThread: 기존 블로킹 코드를 그대로 사용하면서도 가상 스레드로 수천 개의 연결을 효율적으로 처리할 수 있다.
+
+
+
+
+
+
+
