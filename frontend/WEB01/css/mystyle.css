@@ -1,0 +1,18 @@
+/* 02_paragraph.html*/
+/* 한 페이지에서 재활용 */
+.myclass{
+    background-color: azure;
+    padding: 20px;
+}
+
+/* id. 고유성, 한페이지에서 한번만 사용됨. #id는 class 보다 우선순위가 높음
+    태그 선택자 body{}
+    속성 선택자 input[type="text"] {}
+
+*/
+#myhr{
+    width:"50%"; 
+    border:1;
+    height:2px;
+    background-color: blue;
+}
