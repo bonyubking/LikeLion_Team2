@@ -1,3 +1,5 @@
+package com.example;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
