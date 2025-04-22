@@ -5,6 +5,7 @@
 .metadata
 bin/
 tmp/
+build/
 *.tmp
 *.bak
 *.swp
@@ -14,6 +15,9 @@ local.properties
 .loadpath
 .recommenders
 db_properties
+.classpath/
+.project
+Servers/
 
 # External tool builders
 .externalToolBuilders/
