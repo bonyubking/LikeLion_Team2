@@ -1,21 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>Transition & Animation</title>
-  <style>
-    .box {
-      width: 100px;
-      height: 100px;
-      background: coral;
-      transition: transform 0.5s;
-    }
-    .box:hover {
-      transform: scale(1.2);
-    }
-  </style>
-</head>
-<body>
-  <div class="box"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transition & Animation</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: coral;
+        transition: transform 0.5s;
+        /* transition [속성][지속시간][타이밍함수][지연시간]*/
+      }
+      .box:hover {
+        /*transform: scale(1,2);*/
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
 </html>
