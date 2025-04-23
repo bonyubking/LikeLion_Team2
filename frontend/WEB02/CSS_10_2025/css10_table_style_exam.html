@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>선택자 조합의 우선순위 확인</title>
+  <style>
+    /* .outer 클래스를 가진 div 안의 태그를 선택해 속성변경 */
+    div.outer p{
+      color:orange;
+    }
+
+    div:where(h1,h2,h3){
+      color: orange;
+    }
+
+    div:not(.outer) p{
+      color: lime;
+    }
+  </style>
+</head>
+<body>
+  <h1> 111 </h1>
+  <h1> 111 </h1>
+  <h1> 111 </h1>
+
+  <div class="where">
+    <p>안녕 오후야</p>
+  </div>
+  <div>
+    <p>class 적용 안됨</p>
+  </div>
+</body>
+</html>

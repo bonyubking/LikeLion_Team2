@@ -42,3 +42,8 @@ css07_transition_animation.html : 전환 효과 실습
 css08_media_query_responsive.html : 반응형 웹 실습
 css09_custom_font.html : 외부 폰트 사용
 css10_table_style.html : 테이블 스타일링
+css11_selector_advanced.html    :first-child, :nth-child, input[type=], :not() 등 고급 선택자를 활용해 다양한 요소를 정밀하게 선택하고 스타일링하는 실습
+css12_layer_zindex.html    position: absolute와 z-index를 활용하여 요소의 층(layer) 구조와 겹침을 시각적으로 이해하고 제어하는 실습
+css13_card_component.html    : box-shadow, border-radius, transition, :hover 등을 조합하여 카드 형태의 UI 컴포넌트를 설계하고 마우스 반응을 적용하는 실습
+css14_form_ui_enhancement.html :    accent-color, :focus, appearance 등 폼 관련 스타일을 활용해 체크박스, 텍스트 입력창 등 입력 폼 UI를 꾸미는 실습
+css15_variable_theme.html    : 변수명을 이용한 CSS 변수 선언과 다크모드 테마 전환 기능을 구현하고, classList.toggle()로 사용자 정의 스타일을 동적으로 전환하는 실습
