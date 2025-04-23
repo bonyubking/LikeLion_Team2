@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const PUBLIC_IP = process.env.REACT_APP_PUBLIC_IP
+const PUBLIC_PORT = process.env.REACT_APP_PORT
 const App = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const ws = useRef(null);
 
   useEffect(() => {
-    ws.current = new WebSocket('ws://13.209.8.116:8080/GameProject/chat'); // EC2 IP로 바꾸기
+    ws.current = new WebSocket(`ws://${PUBLIC_IP}:${PUBLIC_PORT}/GameProject/chat`); // EC2 IP로 바꾸기
 
     ws.current.onmessage = (event) => {
       setMessages(prev => [...prev, event.data]);
