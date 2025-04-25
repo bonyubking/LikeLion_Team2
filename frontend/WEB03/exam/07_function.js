@@ -14,3 +14,9 @@ function prn(){
 // var sayHello = function () {
 //     console.log("====sayHello====");
 // };
+
+// 함수 표현식은 호이스팅이 안됨
+sayHello();
+var sayHello = function() {
+    console.log("===sayHello===")
+};

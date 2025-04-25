@@ -8,21 +8,36 @@ const b = 20;
 console.log('hap=${a+b}');
 console.log(`hap=${a + b}`);
 
-// case 1 : 단순 출력 
-const fruits = ["사과", "바나나", "포도"];
-fruits.forEach(fruit => {
-    console.log(fruit);
+// case 1 : 단순 출력
+const fruits = ['사과', '바나나', '포도'];
+fruits.forEach((fruit) => {
+  console.log(fruit);
 });
 
 // case 2 : 인덱스 출력 callbackfn: (value: string, index:number, array: string[])
 fruits.forEach((fruit, index) => {
-    console.log(`인덱스 ${index} : ${fruit}`);
+  console.log(`인덱스 ${index} : ${fruit}`);
 });
 
 // case 3 : 인덱스 출력 callbackfn: (value: string, index: number, array: string[])
-fruits.forEach((fruit, index, array) => { 
-    console.log(`인덱스 ${index}: ${fruit} 전체 배열: ${array}`);
+fruits.forEach((fruit, index, array) => {
+  console.log(`인덱스 ${index}: ${fruit} 전체 배열: ${array}`);
 });
 
-// case 4 : 배열의 속성으로 출력 
+// case 4 : 배열의 속성으로 출력
+const fruits_list = [
+  { name: '사과', color: '빨강' },
+  { name: '바나나', color: '노랑' },
+  { name: '수박', color: '파랑' },
+];
 
+fruits_list.forEach((fruit) => {
+  console.log(`${fruit.name} : ${fruit.color}`);
+});
+
+// case 5: 콜백함수 활용
+function print(fruit, index) {
+  console.log(`**${fruit.length}** ${index}`);
+}
+
+fruits.forEach(print);
