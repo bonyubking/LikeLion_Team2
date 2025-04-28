@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>radio demo</title>
+    <style>
+      textarea {
+        height: 25px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="Input Button" />
+      <input type="checkbox" />
+      <input type="file" />
+      <input type="hidden" />
+      <input type="image" />
+      <input type="password" />
+      <input type="radio" name="asdf" />
+      <input type="radio" name="asdf" />
+      <input type="reset" />
+      <input type="submit" />
+      <input type="text" />
+      <select id="select" multiple>
+        <option>OptionA</option>
+        <option>OptionB</option>
+        <option>OptionC</option>
+      </select>
+      <textarea></textarea>
+      <button id="checkRadio">결과 확인</button>
+    </form>
+    <div id="info"></div>
+
+    <script>
+      // 1. 모든 라디오 버튼을 노란색 배경 + 발간색 테두리 설정
+      var input = $('form input:radio').wrap('<span></span>').parent().css({
+        background: 'yellow',
+        border: '3px red solid',
+      });
+
+      // 2. div#info 라디오 버튼의 개수 표시
+      $('#info').text("라디오 버튼 수 :"+input.length).css("color","red");
+
+    //   $('div')
+    //     .text('For this type jQuery found ' + input.length + '.')
+    //     .css('color', 'red');
+
+      // 3. 폼의 기본 제출 막기  
+      $('form').on('submit', function (event) {
+        event.preventDefault();
+      });
+
+      // 4. "결과 확인" 버튼을 클릭 시 선택된 라디오 값을 출력 
+      $('#checkRadio').on("click",function(){
+        const checked = $("input:radio:checked").val();
+        if(checked){
+            $('#info').text("선택한 값 :"+checked);
+        }else{
+            $('#info').text("없음 : "+checked);
+        }
+
+        const checked02 = $("select").val();
+        if(checked02){
+            $('#info').text("선택한 값 :"+checked02.join(" < "));
+        }else{
+            $('#info').text("없음 : "+checked02);
+        }
+      });
+    </script>
+  </body>
+</html>

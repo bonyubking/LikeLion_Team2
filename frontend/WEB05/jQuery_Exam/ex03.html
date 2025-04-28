@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>val demo</title>
+    <style>
+      p {
+        color: blue;
+        margin: 8px;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <form id="myform" action="/">
+      <input type="text" id="tid" />
+      <button id="submit">확인</button>
+    </form>
+    <script>
+      $("#myform").trigger("submit"); //강제 실행
+    </script>
+  </body>
+</html>

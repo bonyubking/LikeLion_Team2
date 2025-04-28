@@ -45,3 +45,12 @@ react07_UseEffect.jsx : useEffect로 실시간 시계 구현
 react08_FetchData.jsx : 외부 API 데이터 가져오기
 react09_FormSubmit.jsx : 폼 입력 및 제출 처리
 react10_ParentChild.jsx : 부모 → 자식 컴포넌트 데이터 전달
+
+=======================================================
+npm 패키지 이름 규칙
+- 소문자만 허용
+- -,_ 사용
+- 특수문자 불가능
+- 길이 제한 있음(약 32자)
+- 예약어 불가능
+- 점(.), 공백 불가능
