@@ -65,4 +65,17 @@ test-ui 프로젝트
 const [현재상태값, 상태변경함수] = useState(초기값);
 const [state, setState] = useState(initialState);
 
-ex) const[count,setCount] = useState(0); // 초기값
+ex) const[count,setCount] = useState(0); // 초기값 0
+
+
+- useEffect : 사이드 이펙트 담당 -> 데이터 가졍괴, Dom 직접 접근
+function MyComponent(){
+   useEffect(()=>{
+      //수행할 작업
+      //db 연결
+      return()=>{
+         //정리할 코드
+         //DB 연결 해제
+      };
+   });
+}
