@@ -54,3 +54,15 @@ npm 패키지 이름 규칙
 - 길이 제한 있음(약 32자)
 - 예약어 불가능
 - 점(.), 공백 불가능
+
+=======================================================
+test-ui 프로젝트
+1) 컴포넌트 (Component) : UI를 작은 조각으로 나누는 단위 (함수, 클래스, 훅)
+2) Jsx : js안에 html 
+3) Props : 읽기 전용 : 컴포넌트에 값을 전달하는 방법 부모->자식으로 정보 전달 
+4) state : 컴포넌트 안에서 변경할 수 있는 값/ 변하는 값
+
+const [현재상태값, 상태변경함수] = useState(초기값);
+const [state, setState] = useState(initialState);
+
+ex) const[count,setCount] = useState(0); // 초기값
