@@ -79,3 +79,10 @@ function MyComponent(){
       };
    });
 }
+
+- node.js 로 서버를 실행한 다음 react 클라이언트로 값을 리턴받기
+1) my-node-server 폴더 생성
+2) 터미널에서 cd my-node-server
+3) my-node-server >npm init-y
+4) npm install express -> 모듈 설치
+5) server.js 파일 생성 

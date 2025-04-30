@@ -29,3 +29,21 @@ export function TodosOne() {
     </div>
   );
 }
+
+export function MyNode() {
+  const [message, setMessage] = useState('Loading...');
+
+  useEffect(() => {
+    fetch('http://localhost:7777/api/data')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+  }, []);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>{message}</p>
+      </header>
+    </div>
+  );
+}
