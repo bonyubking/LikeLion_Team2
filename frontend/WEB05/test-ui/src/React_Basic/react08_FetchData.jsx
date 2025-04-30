@@ -47,3 +47,47 @@ export function MyNode() {
     </div>
   );
 }
+
+export function MyText() {
+  const [message, setMessage] = useState('Loading...');
+
+  useEffect(() => {
+    fetch('http://localhost:7777/api/text')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+  }, []);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>{message}</p>
+      </header>
+    </div>
+  );
+}
+
+export function MyUser() {
+  const [message, setMessage] = useState('Loading...');
+
+  useEffect(() => {
+    fetch('http://localhost:7777/api/user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: '야옹이',
+        email: 'a@a.com',
+        addr:'서울시...'
+      })
+    })
+      .then(response => response.json())
+      .then(data => setMessage(`${data.user.username}`))
+  }, []);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p>{message}</p>
+      </header>
+    </div>
+  );
+}

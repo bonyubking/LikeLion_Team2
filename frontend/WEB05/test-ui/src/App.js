@@ -7,7 +7,12 @@ import NameInput, { DateInput } from './React_Basic/react04_InputBinding';
 import LoginStatus from './React_Basic/react05_ConditionalRender';
 import SkillList from './React_Basic/react06_ListRender';
 import Clock from './React_Basic/react07_UseEffect';
-import UserList, { MyNode} from './React_Basic/react08_FetchData';
+import UserList, {
+  MyNode,
+  MyText,
+  MyUser,
+} from './React_Basic/react08_FetchData';
+import FormSubmit, { SeverFormSubmit } from './React_Basic/react09_FormSubmit';
 
 function App() {
   const [CurrentComponent, setCurrentComponent] = useState('React01');
@@ -30,6 +35,8 @@ function App() {
         return <React07 />;
       case 'React08':
         return <React08 />;
+      case 'React09':
+        return <React09 />;
       default:
         return <React01 />;
     }
@@ -48,6 +55,7 @@ function App() {
         <button onClick={() => setCurrentComponent('React06')}>React06</button>
         <button onClick={() => setCurrentComponent('React07')}>React07</button>
         <button onClick={() => setCurrentComponent('React08')}>React08</button>
+        <button onClick={() => setCurrentComponent('React09')}>React09</button>
       </div>
 
       {/* 현재 선택된 컴포넌트 표시 */}
@@ -58,11 +66,22 @@ function App() {
   );
 }
 
+function React09() {
+  return (
+    <div>
+      <FormSubmit />
+      <SeverFormSubmit />
+    </div>
+  );
+}
+
 function React08() {
   return (
     <div>
       <UserList />
-      <MyNode/>
+      <MyNode />
+      <MyText />
+      <MyUser />
     </div>
   );
 }
