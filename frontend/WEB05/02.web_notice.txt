@@ -86,3 +86,11 @@ function MyComponent(){
 3) my-node-server >npm init-y
 4) npm install express -> 모듈 설치
 5) server.js 파일 생성 
+
+
+-- React11_Router.jsx
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+BrowserRouter : 전체 앱을 라우팅 기능 가능하도록 감싸주는 최상위 컴포넌트 
+Routes : 여러개의 Route를 포함하는 컨테이너
+Route : 특정경로 path에 도달했을 때 element를 보여줌
+Link : html<a>처럼 요청은 동일하지만 새로고침없이 URL만 바꿔서 해당 컴포넌트 렌더링함 
