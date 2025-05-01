@@ -7,6 +7,18 @@ export default function TravelCard(props) {
     setIsOpen(!isOpen);
   };
 
+  const onDelete = async (id) => {
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/travels/${props.id}`, {
+        method: 'DELETE',
+      });
+      
+      if (res.ok) {
+        alert("삭제 완료");
+      } else { 
+        alert("삭제 실패");
+      }
+  };
+
   return (
     <div className="card">
       <img 
@@ -31,7 +43,7 @@ export default function TravelCard(props) {
         </h2>
 
         <p className="card--date">{props.startDate} ~ {props.endDate}</p>
-
+        <button onClick={() => onDelete(props.id)}>삭제</button>
         {isOpen && (
           <div className="card--detail">
             <p>{props.description}</p>

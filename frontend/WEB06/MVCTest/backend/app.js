@@ -1,7 +1,10 @@
+// 서버 실행, 라우팅
+// 백엔드 서버 메인 진입점 
 
-const express = require('express');
-const cors = require('cors');
-const app = express();
+const express = require('express'); //백엔드 서버를 웹 프레임워크 서버로 구현함 
+const cors = require('cors'); // 모듈 호출 react port 3000 <-> node.js(3001) 통신 허용 
+const app = express();// 앱 객체 미들웨어 등록 
+require('dotenv').config();
 
 app.use(cors()); // 포트 충돌 막음 
 app.use(express.json()); //json 형식으로 request.body 파싱 
@@ -11,10 +14,10 @@ app.get('/', (req, res) => {
   res.send('Backend server is running');
 });
 
-// 여행지 관련 API 엔드포인트는 여기에 추가 예정
-// app.use('/api/travels', require('./routes/travelRoutes'));
+//여행지 관련 API 엔드포인트는 여기에 추가 예정
+app.use('/api/travels', require('./routes/travelRoutes'));
 
-const PORT = 3001;
+const PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
