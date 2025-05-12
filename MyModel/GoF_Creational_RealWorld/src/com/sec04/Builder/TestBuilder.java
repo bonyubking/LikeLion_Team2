@@ -11,6 +11,5 @@ public class TestBuilder {
             .build();
         report.print();
 
-        System.out.println(new StringBuffer().append("abc").append("def"));
-    }
+        System.out.println(new StringBuffer().append("abc").append("ddd").toString());    }
 }

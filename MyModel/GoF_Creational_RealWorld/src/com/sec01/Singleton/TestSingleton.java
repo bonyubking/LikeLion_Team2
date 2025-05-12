@@ -14,9 +14,9 @@ public class TestSingleton {
         // System.out.println("Same instance: " + (logger1 == logger2));
 
         Runtime runtime = Runtime.getRuntime();
-        try{
+        try {
             runtime.exec("mspaint.exe");
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         LogManager res = LogManager.getLogManager();
