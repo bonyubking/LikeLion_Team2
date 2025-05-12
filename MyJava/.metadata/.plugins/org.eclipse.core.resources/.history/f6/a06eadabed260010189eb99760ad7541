@@ -1,0 +1,5 @@
+package com.typing.service.Post;
+
+public class PostServiceImpl {
+
+}

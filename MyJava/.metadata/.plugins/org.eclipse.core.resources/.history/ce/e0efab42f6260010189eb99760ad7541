@@ -1,0 +1,7 @@
+package com.typing.controller;
+
+
+public class PostController {
+	private final PostService postService = new PostServiceImpl();
+
+}

@@ -1,0 +1,5 @@
+package com.typing.dao.Record;
+
+public interface SongRecordDAO {
+
+}

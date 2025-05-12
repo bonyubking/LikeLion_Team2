@@ -1,0 +1,7 @@
+package com.workshop8.num2;
+
+public interface Temp {
+	
+	void getTempGage(int tmp);
+		
+}

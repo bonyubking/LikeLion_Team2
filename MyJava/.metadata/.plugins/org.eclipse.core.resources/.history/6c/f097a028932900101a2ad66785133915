@@ -1,0 +1,5 @@
+package com.typing.util;
+
+public class QueryString {
+
+}

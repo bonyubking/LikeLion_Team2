@@ -1,0 +1,8 @@
+package com.typing.model.dto;
+
+public class SongFilter {
+	
+	private String genre;
+	private int hint_time;
+
+}

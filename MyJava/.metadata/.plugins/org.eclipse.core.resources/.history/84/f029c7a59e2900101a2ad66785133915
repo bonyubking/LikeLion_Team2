@@ -1,0 +1,10 @@
+package com.typing.service.Record;
+
+import java.util.List;
+
+
+
+public interface SongRecordService {
+	
+    public List<SongRecordDTO> fetchByFilter(SongFilter s);
+}

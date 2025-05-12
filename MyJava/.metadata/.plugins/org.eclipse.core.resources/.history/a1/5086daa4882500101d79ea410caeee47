@@ -1,0 +1,5 @@
+package com.typing.dao;
+
+public class UserDAO {
+    
+}

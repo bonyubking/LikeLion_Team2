@@ -1,0 +1,5 @@
+package com.typing.dao.Post;
+
+public interface PostDao {
+
+}
