@@ -1,0 +1,7 @@
+com.seco2 : 생성자 주입 DI
+
+Meesage(I)
+HelloMessage(C)
+MessagePrinter 생성자 주입 Message
+MessageMain
+application02.xml
