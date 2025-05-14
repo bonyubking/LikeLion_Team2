@@ -14,6 +14,18 @@
     <constructor-arg value="010-0000-0000"/>
   </bean>
 
+  <!--setter 주입-->
+  <bean id="myAddress03" class="com.sec01.MyAddress">
+    <property name="name" value="김길동03"/>
+    <property name="addr" value="김길동addr"/>
+    <property name="tel" value="김길동03tel"/>
+  </bean>
+
+  <bean id="info" class="com.sec01.AddressInfo">
+    <property name="myAddress" ref="myAddress03"/>
+    <property name="age" value="30" />
+  </bean>
+
   <!-- more bean definitions go here -->
 
 </beans>

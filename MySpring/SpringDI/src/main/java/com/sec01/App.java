@@ -12,5 +12,8 @@ public class App {
         MyAddress res02 = context.getBean("myAddress02", MyAddress.class);
         System.out.println(res02);
 
+        AddressInfo res03 = context.getBean("info", AddressInfo.class);
+        System.out.println(res03);
+        res03.prn();
     }
 }

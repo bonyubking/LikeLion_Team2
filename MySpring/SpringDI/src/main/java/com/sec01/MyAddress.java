@@ -6,6 +6,18 @@ public class MyAddress {
   private String addr;
   private String tel;
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setAddr(String addr) {
+    this.addr = addr;
+  }
+
+  public void setTel(String tel) {
+    this.tel = tel;
+  }
+
   public MyAddress() {
    this("홍길동","서울시","00-0000-0000");
   }

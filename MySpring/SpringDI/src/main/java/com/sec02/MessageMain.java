@@ -11,6 +11,9 @@ public class MessageMain {
     MessagePrinter res = context.getBean("messagePrint", MessagePrinter.class);
     res.print();
 
+    MessagePrinter res02 = context.getBean("messagePrint02", MessagePrinter.class);
+    res02.print();
+
   }
 
 }
