@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="myCollection" class="com.sec04.MyCollection">
+	  <property name="items">
+	      <list>
+	        <value>Item A</value>
+	        <value>Item B</value>
+	        <value>Item aC</value>
+	      </list>
+	    </property>
+	    
+	    <property name="myarray">
+	      <array>
+	        <value>Item A</value>
+	        <value>Item B</value>
+	        <value>Item aC</value>
+	      </array>
+	    </property>
+	    
+	     <property name="myset">
+	      <set>
+	        <value>Item A0set</value>
+	        <value>Item B1set</value>
+	        <value>Item C2set</value>
+	      </set>
+	    </property>
+	
+	
+	</bean>
+
+</beans>
