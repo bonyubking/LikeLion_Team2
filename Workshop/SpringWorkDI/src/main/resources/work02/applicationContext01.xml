@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--Student 객체-->
+  <bean id="st1" class="work02.sec01.Student">
+    <constructor-arg value="홍길동"/>
+    <constructor-arg value="15" />
+    <constructor-arg value="170" />
+    <constructor-arg value="80"/>
+  </bean>
+
+  <!--Student 객체-->
+  <bean id="st2" class="work02.sec01.Student">
+    <constructor-arg value="정길동"/>
+    <constructor-arg value="13" />
+    <constructor-arg value="180" />
+    <constructor-arg value="70"/>
+  </bean>
+
+  <!--Student 객체-->
+  <bean id="st3" class="work02.sec01.Student">
+    <constructor-arg value="이순신"/>
+    <constructor-arg value="16" />
+    <constructor-arg value="175" />
+    <constructor-arg value="65"/>
+  </bean>
+
+  <!--StudentService 객체-->
+  <bean id="studentService" class="work02.sec01.StudentService">
+    <property name="studentList" >
+      <list>
+        <ref bean="st1"/>
+        <ref bean="st2"/>
+        <ref bean="st3"/>
+      </list>
+    </property>
+  </bean>
+</beans>

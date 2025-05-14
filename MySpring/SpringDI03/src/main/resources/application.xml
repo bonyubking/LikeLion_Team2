@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--MyAddress myaddress = new MyAddress() 와 같음-->
+  <bean id="myAddress" class="com.sec01.MyAddress">
+    <constructor-arg value="홍길동2"/>
+  </bean>
+  <bean id="myAddress02" class="com.sec01.MyAddress">
+    <constructor-arg value="myAddress02"/>
+    <constructor-arg value="제주도"/>
+    <constructor-arg value="010-0000-0000"/>
+  </bean>
+
+  <!--setter 주입-->
+  <bean id="myAddress03" class="com.sec01.MyAddress">
+    <property name="name" value="김길동03"/>
+    <property name="addr" value="김길동addr"/>
+    <property name="tel" value="김길동03tel"/>
+  </bean>
+
+  <bean id="info" class="com.sec01.AddressInfo">
+    <property name="myAddress" ref="myAddress03"/>
+    <property name="age" value="30" />
+  </bean>
+
+  <!-- more bean definitions go here -->
+
+</beans>
