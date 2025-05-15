@@ -1,0 +1,25 @@
+package work03.sec01;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+  @Bean
+  public MemberRepository memberRepository() {
+    return new MemoryMemberRepository();
+  }
+
+  @Bean
+  public DiscountPolicy discountPolicy() {
+    return new FixDiscountPolicy();
+  }
+
+  @Bean
+  public OrderService orderService(MemberRepository memberRepository,
+      DiscountPolicy discountPolicy) {
+
+    return new OrderServiceImpl(memberRepository, discountPolicy);
+  }
+}
