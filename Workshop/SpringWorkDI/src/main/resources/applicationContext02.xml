@@ -4,5 +4,6 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="greeting" class="com.sec02.EveningGreet" />
+  <bean id="greeting" class="com.sec02.EveningGreet" init-method="init" destroy-method="destory"/>
+  <bean id="lunchGreet" class="com.sec02.LunchGreet" init-method="init" destroy-method="destory"/>
 </beans>

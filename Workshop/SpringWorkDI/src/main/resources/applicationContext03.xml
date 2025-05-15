@@ -5,7 +5,7 @@
 		https://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="morningGreet" class="com.sec03.MorningGreet" />
-  <bean id="greeting" class="com.sec03.GreetService" >
+  <bean id="greeting" class="com.sec03.GreetService" scope="prototype" >
     <property name="greet" ref="morningGreet" />
   </bean>
 </beans>

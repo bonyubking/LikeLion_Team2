@@ -11,10 +11,10 @@ public class EmployeeService {
     this.departmentMap = departmentMap;
   }
 
-  public void printAllEmployees(){
-    for(Map.Entry<String, List<Employee>> entry : departmentMap.entrySet()){
-      System.out.printf("[%s 부서]\n", entry.getKey());
-      for(Employee employee : departmentMap.get(entry.getKey())){
+  public void printAllEmployees() {
+    for (String dept: departmentMap.keySet()) {
+      System.out.printf("[%s 부서]\n", dept);
+      for (Employee employee : departmentMap.get(dept)) {
         System.out.println(employee.toString());
       }
     }

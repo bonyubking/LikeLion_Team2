@@ -1,10 +1,10 @@
 package com.sec02;
 
-public class EveningGreet implements Greet {
+public class LunchGreet implements Greet {
 
   @Override
   public String greeting() {
-    return "편안한 저녁입니다.";
+    return "점심시간입니다";
   }
 
   // 생명주기 확인을 위한 메소드 추가

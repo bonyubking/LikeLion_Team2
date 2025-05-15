@@ -1,6 +1,7 @@
 package work02.sec02;
 
 public class Employee {
+
   private String name;
   private String position;
 
@@ -14,6 +15,6 @@ public class Employee {
 
   @Override
   public String toString() {
-    return "- "+name+" ("+position+")";
+    return "- " + name + " (" + position + ")";
   }
 }
