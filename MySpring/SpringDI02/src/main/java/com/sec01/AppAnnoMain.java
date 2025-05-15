@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class AppAnnoMain {
   public static void main(String[] args) {
     ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
     MyAddress res = context.getBean("myAddress",MyAddress.class);
     System.out.println(res);
 

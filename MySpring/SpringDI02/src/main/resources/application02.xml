@@ -23,8 +23,8 @@
   <!--	</bean>-->
 
   <!-- 객체 주입 지정된 class인 Integer(String)-->
-  <!--	<bean id="myResource02" class="java.lang.Integer">-->
-  <!--		<constructor-arg value="100" />-->
-  <!--	</bean>-->
+  	<bean id="myResource02" class="java.lang.Integer">
+  		<constructor-arg value="100" />
+  	</bean>
 
 </beans>
