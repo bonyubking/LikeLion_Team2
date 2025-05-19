@@ -17,4 +17,15 @@
 			<constructor-arg value = "bonyub" index ="1"/>
 			<constructor-arg value = "street" index ="0"/>   
 	</bean>
+	
+	<bean id="myaddress04" class="com.sec01.MyAddress">
+		<property name="street" value="길동"></property>
+	</bean>
+	
+	<bean id="info" class ="com.sec01.AddressInfo">
+		<property name="address" value="info테스트"/>
+		<property name="num" value="30"/>
+	</bean>
+	
+	
 </beans>

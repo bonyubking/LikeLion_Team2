@@ -12,6 +12,14 @@
 	
 	</bean>
 	
+	<bean id ="hellomessage" class = "com.sec02.HelloMessage"/>
+	
+	<bean id="messagePrint" class="com.sec02.MessagePrinter">
+		
+		<constructor-arg ref = "hellomessage"/>  
+	
+	</bean>
+	
 	
 
 </beans>
