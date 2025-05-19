@@ -10,8 +10,8 @@ public class Student {
 		} catch (Exception e) {
 			System.out.println("학습 중 오류가 발생했습니다.");
 		} finally {
-			System.out.println("[학생] 강의종료후 퇴실을 확인합니다.");
+			System.out.println("[학생] 강의종료후 퇴실을 확인합니다."); //@After
 		}
-		System.out.println("줌로그아웃 합니다.");
+		System.out.println("줌로그아웃 합니다."); //@AfterReturning
 	}
 }

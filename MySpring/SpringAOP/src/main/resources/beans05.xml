@@ -19,3 +19,11 @@
         </aop:aspect>
     </aop:config>
 </beans>
+
+<!--
+    execution(* com.test05.Student.*(..))
+    xom.test05.Student.* : com.test05.Student 클래스 안 모든 메소드
+    (..) : 매개인자 개수 타입 상관없음
+
+
+-->

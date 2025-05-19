@@ -9,8 +9,6 @@ public class MyAspect implements MethodInterceptor {
     // invoke(MethodInvocation invocation) -> Advice를 정의하는 곳 = 언제 무슨일을 할지 정의함
     // 언제 : 메소드 호출할 때마다 실행
     // 무슨 일 : 관심사(핵심 공통 분리한 내용)에 대한 로직
-
-
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         System.out.println("method "+invocation.getMethod()+"is called on "+
