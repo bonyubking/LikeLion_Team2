@@ -11,7 +11,7 @@ public class OrderServiceImpl implements OrderService {
   }
 
   @Override
-  public String order(int id, int price) {
+  public String order(int id, int price) { // 비즈니스 로직 설계 : 회원이름 조회, 할인 금액 계산, 최종결제금액 계산
     String memberName = memberRepository.findMemberById(id);
     int discountAmount = discountPolicy.getDiscountAmount(price);
     int discountPrice = price - discountAmount;
