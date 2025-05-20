@@ -3,14 +3,10 @@ package com.mydb.core;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import lombok.AllArgsConstructor;
+import lombok.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
-@Repository
 public class EmpDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -18,7 +14,6 @@ public class EmpDao {
     // 생성자 주입
     public EmpDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        System.out.println("EmpDao's constructor ");
     }
 
     // SELECT ALL
