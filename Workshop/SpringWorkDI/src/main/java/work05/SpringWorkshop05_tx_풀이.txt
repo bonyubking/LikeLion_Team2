@@ -1,0 +1,14 @@
+[문제1] @Transactional
+[문제2] @Transactional(readOnly = true)
+[문제3] 내부 호출은 프록시 거치지 않아서 트랜잭션이 적용되지 않음 
+[문제4] @Transactional(rollbackFor = OytOfStockException.class)
+[문제5] @Transactional(propagation = Propagation.REQUIRES_NEW)
+[문제6] @Transactional(timeout = 2)
+[문제7] @Transactional(rollbackFor = IOException.class)
+[문제8] statis.setRollbackOnly()
+[문제9] TRACE
+[문제10] @Retryable(value = DeadlockLoserDataAccessException.class, maxAttempts = 3)
+[문제11] @Transactional(readOnly = true)
+[문제12] @Transactional(transactionManager = "auditTransactionManager") 
+[문제13] mailService.sendMailSync();
+[문제14] @Order(0)
