@@ -1,0 +1,8 @@
+package com.mydb.core;
+
+public class Emp {
+    private int empno;
+    private String ename;
+    private String job;
+    private int deptno;
+}

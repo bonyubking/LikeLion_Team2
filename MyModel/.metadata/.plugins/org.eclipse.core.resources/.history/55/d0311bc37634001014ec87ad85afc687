@@ -1,0 +1,32 @@
+package com.test03;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+//https://eclipse.dev/aspectj/doc/latest/runtime-api/org/aspectj/JoinPoint.html
+
+@Aspect //핵심+공통로직을 분리해서 구현하는 클래스 
+@Component
+public class MyAspect {
+
+	// Advice를 저장한다 : 특정 JoinPoint에서 실행되는 실제 동작들을 @으로 저장한다. 
+	
+	@Before("execution(public void com.test03.*.classWork(..))") // pointcut -> 어드바이스가 적용되는 특정 지점에 대한 표현식
+	public void before(JoinPoint joinPoint) { //메소드 실행 정보
+		System.out.println("[AOP] 줌인 합니다. 출석 확인."+ joinPoint.toString());
+	}
+
+	@AfterThrowing(pointcut = "execution(public void com.test03.*.classWork(..))", throwing = "e")
+	public void throwing(JoinPoint jointPoint, Throwable e) {
+		System.out.println("[AOP]학습 중 오류가 발생했습니다."+e.getMessage());
+	}
+
+	@After("execution(public void com.test03.*.classWork(..))")
+	public void after(JoinPoint jointPoint) {
+		System.out.println("[AOP]줌로그아웃 합니다.");
+	}
+}

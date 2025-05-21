@@ -1,0 +1,21 @@
+package com.test02;
+
+import org.springframework.context.ApplicationContext;
+
+public class Test02MTest {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContexta("beans02.xml");
+		
+		Person g7=(Person)context.getBean("g7");
+		System.out.println("**** 강사 출석 ****");
+		g7.classWork();
+
+		Person student =(Person)context.getBean("student");
+		System.out.println("======================================");
+		System.out.println("**** 학생 출석 ****");
+		s.classWork();
+	}
+
+}

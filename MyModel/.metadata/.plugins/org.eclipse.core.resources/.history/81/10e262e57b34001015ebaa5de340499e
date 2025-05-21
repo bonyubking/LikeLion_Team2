@@ -1,0 +1,28 @@
+package com.test06;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Test06MTest {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans06.xml");
+	
+		System.out.println("======================================");
+		Person stx =context.getBean("student",Student.class);
+		System.out.println("**** 학생 수업시작 ****");
+		stx.classWork();
+		/*stx.homeWork();
+		stx.meeting("월급인상");
+		
+		((Person)stx).study();
+		((Person)stx).relax();
+		((Person)stx).eat("스테이크"); */
+		System.out.println((Person)stx.getScore());
+	
+		((ClassPathXmlApplicationContext)context).close();
+		
+	}
+
+}

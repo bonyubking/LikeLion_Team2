@@ -1,0 +1,36 @@
+package com.test06;
+
+public class Student {
+
+	public Student() {
+		System.out.println("기본 생성자");
+	}
+	
+	public void classWork() {
+		System.out.println("[학생] classWork");
+	}
+
+	public void homeWork() {
+		System.out.println("[학생] homesWork");
+	}
+
+	public void meeting(String topic) {
+		System.out.println("[학생] meeting "+topic);		
+		
+	}
+	
+	public void study() {
+		System.out.println("[학생] study");
+	}
+	public void relax() {
+		System.out.println("[학생] relax");
+	}
+	public void eat(String food) {
+		System.out.println("[학생] eat "+food);
+	}
+	public int getScore() {
+		return 100;
+	}
+	
+
+}

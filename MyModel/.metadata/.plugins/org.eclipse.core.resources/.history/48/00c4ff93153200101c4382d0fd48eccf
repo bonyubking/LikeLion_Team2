@@ -1,0 +1,52 @@
+package com.person.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.sql.Statement;
+import com.person.model.Person;
+
+@Repository
+public class PersonDaoImple implements PersonDao {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	/*
+	 * public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+	 * this.jdbcTemplate=jdbcTemplate; }
+	 */
+
+	// 1.insert
+	public int insertPerson(Person p) {
+		return null;
+	}
+
+	// 2.delete
+	public int deletePerson(Person p) {
+		return 0;
+	}
+
+	// 3.update
+	public int updatePerson(Person p) {
+		return 0;
+	}
+
+	// 4.select
+	public List<Person> selectAllPerson() {
+		return null;
+	}
+
+	// 5.find
+	public Person searchByName(Person p) {
+		return null;
+
+	}
+
+	// 페이징
+	@Override
+	public List<Person> getPersonPage(int page, int size) {
+
+	}
+}

@@ -1,0 +1,18 @@
+package com.mydb.core;
+
+
+
+
+public class AppConfig {
+
+    @Bean
+    public DataSource dataSource() {
+        
+        return ds;
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource ds) {
+        return 
+    }
+}

@@ -1,0 +1,27 @@
+package com.test06;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class MyAspect {
+	
+	@Pointcut("execution(*com.test05.Student.*(..))")
+	public void allMethods() {} // 가안으로 대처할 수 있는 포인트 커시 있는 메소드를 만들어 준다
+	
+	@Before ("allMethods()")
+	public void before(JoinPoint joinpoint) {
+		System.out.println("[AOP] 메서드 실행 전: " + joinpoint.getSignature().getName());
+	}
+	
+	@After("allMethods()")
+	public void after(JoinPoint joinpoint) {
+		System.out.println("[AOP] 메서드 실행 후: " + joinpoint.getSignature().getName());
+	}
+
+}

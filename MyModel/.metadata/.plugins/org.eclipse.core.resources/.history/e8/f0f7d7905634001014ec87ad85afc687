@@ -1,0 +1,23 @@
+package com.test03;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class MyAspect {
+
+	public void before(JoinPoint joinPoint) {
+	 System.out.println("[AOP] 줌인 합니다. 출석 확인.");
+	}
+	
+	 try {   
+	     ret=i.proceed(); //핵심 코드인 메소드를 실행 classWork()
+	} catch (Exception e) {
+		System.out.println("[AOP]학습 중 오류가 발생했습니다.");
+	
+		public void after(JoinPoint jointPoint) {
+	System.out.println("[AOP]줌로그아웃 합니다.");
+		}
+}

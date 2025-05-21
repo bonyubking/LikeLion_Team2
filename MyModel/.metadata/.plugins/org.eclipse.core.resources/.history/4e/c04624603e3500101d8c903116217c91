@@ -1,0 +1,19 @@
+package com.mydb.core;
+
+public class EmpDao {
+
+    private final JdbcTemplate jdbcTemplate;
+
+   
+   // 생성자 주입 
+
+    // SELECT ALL
+    public List<Emp> findAll() {
+        
+    }
+  
+    // 내부 RowMapper 클래스
+    private static class EmpRowMapper implements RowMapper<Emp> {
+      
+    }
+}

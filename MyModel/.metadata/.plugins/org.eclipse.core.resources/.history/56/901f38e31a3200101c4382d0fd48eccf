@@ -1,0 +1,59 @@
+package com.person.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import java.sql.Statement;
+import java.util.List;
+
+import com.person.model.Person;
+
+@Repository
+public class PersonDaoImple implements PersonDao {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	/*
+	 * public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+	 * this.jdbcTemplate=jdbcTemplate; }
+	 */
+
+	// 1.insert update(String sql, Object...args)
+	public int insertPerson(Person p) {
+		return jdbcTemplate.update(insert_sql,p.getName(),p.getAddress(),p.getPhone());
+	}
+
+	// 2.delete  : update(String sql, Object...args)
+	public int deletePerson(Person p) {
+		return jdbcTemplate.update(delete_sql,p.getName());
+
+	}
+
+	// 3.update : update(String sql, Object...args)
+	public int updatePerson(Person p) {
+		return jdbcTemplate.update(update_sql,p.getName(),p.getAddress(),p.getPhone());
+	}
+	
+	private RowMapper<Person> personRowMapper = (rs,rowNum) -> new Person();
+
+	// 4.select All : query(String sql,Object ...args)
+	public List<Person> selectAllPerson() {
+		return null;
+
+	}
+
+	// 5.find
+	public Person searchByName(Person p) {
+		return null;
+
+	}
+
+	// 페이징
+	@Override
+	public List<Person> getPersonPage(int page, int size) {
+		return null;
+	}
+}

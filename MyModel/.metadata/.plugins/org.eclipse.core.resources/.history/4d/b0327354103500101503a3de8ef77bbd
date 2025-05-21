@@ -1,0 +1,23 @@
+package test01;
+
+public class OrderServiceImpl implements OrderService {
+
+	private final MemberRepository memberRepository;
+	private final DiscountPolicy discountPolicy;
+	
+	public OrderServiceImpl(MemberRepository memberRepository,DiscountPolicy discountPolicy) {
+		this.memberRepository=memberRepository;
+		this.discountPolicy=discountPolicy;
+	}
+	
+	@Override
+	public String order(int id, int price) {
+		String name=memberRepository.findMemberById(id);
+		int discount=discountPolicy.getDiscountAmount(price);
+		int finalPrice=price-discount;
+		
+		 return String.format("회원: %s\n주문 금액: %d원\n할인 금액: %d원\n최종 결제 금액: %d원",
+	                name, price, discount, finalPrice);
+	}
+
+}
