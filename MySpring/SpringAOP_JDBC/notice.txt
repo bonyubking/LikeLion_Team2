@@ -127,6 +127,21 @@ public class EmpService {
     }
 }
 
+트랜잭션의 전파 속성(Propagation)과 격리 수준(Isolation Level),
+Propagation (전파 속성) : 하나의 트랜잭션 내에서 또 다른 트랜잭션을 호출할 때의 동작을 정의
+   REQUIRED: 현재 트랜잭션이 있으면 사용, 없으면 새로 생성 (기본값)
+   REQUIRES_NEW: 항상 새로운 트랜잭션 생성
+   NESTED: 내부 트랜잭션처럼 동작, 롤백은 부모에 영향을 미치지 않음
+
+ex) A → B 호출 시, B의 작업이 A와 별도로 커밋되어야 할 경우 → REQUIRES_NEW
+ex ) A에서 예외 발생 시 B의 작업도 함께 롤백되어야 한다면 → REQUIRED
+
+Isolation (격리 수준) :동시성 문제(Dirty Read, Phantom Read 등)를 방지하기 위한 데이터 접근 수준 설정 = DB서버의 기본값을 그대로 세
+   READ_UNCOMMITTED: 가장 낮은 수준, Dirty Read  -> 거의 사용하지 않음. : 실시간 데이터가 지연되면 롤백시켜라 지정했는데 롤백하고 아무거나 리턴함
+   READ_COMMITTED: 커밋된 데이터만 읽음 (Oracle 기본값)
+   REPEATABLE_READ: 같은 트랜잭션 내 같은 쿼리는 동일한 결과 보장 (MySQL 기본값) : 반복데이터 읽기 불가능
+   SERIALIZABLE: 가장 엄격, 동시성 거의 없음 : 금융데이터 등 계좌이체시 다른 트랜잭션 접근 불가능 -> 성능이 너무 느림
+
 ======================롬복 온라인 리소스  =======================
 공식 웹사이트: https://projectlombok.org/
 
