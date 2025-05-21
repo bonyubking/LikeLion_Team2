@@ -1,0 +1,48 @@
+package com.person.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.person.dao.PersonDao;
+import com.person.dao.PersonDaoImple;
+import com.person.model.Person;
+
+@Service
+public class PersonServiceImple implements PersonService {
+
+	
+	@Autowired
+	private PersonDao dao;
+	
+	@Override
+	public List<Person> selectAllPerson() {
+		return dao.selectAllPerson();
+	}
+
+	@Override
+	public int insertPerson(Person p) {
+		return dao.insertPerson(p);
+	}
+
+	@Override
+	public int deletePerson(Person p) {
+		return dao.deletePerson(p);
+	}
+	
+	@Override
+	public int updatePerson(Person p) {
+		return dao.updatePerson(p);
+	}
+
+	@Override
+	public Person searchByName(Person p) {
+		return dao.searchByName(p);
+	}
+
+	@Override
+	public List<Person> getPersonByPage(int page, int size) {
+		return dao.getPersonPage(page,size);
+	}
+}
