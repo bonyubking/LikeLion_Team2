@@ -1,0 +1,69 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+  <context:component-scan base-package="com.test01" />
+  <mybatis-spring:scan base-package="com.test01" />
+  <context:property-placeholder location="classpath:db.properties" />
+
+  <!--dataSource 설정-->
+  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+    <property name="driverClassName" value="${driver}"/>
+    <property name="url" value="${url}"/>
+    <property name="username" value="${username}"/>
+    <property name="password" value="${password}"/>
+  </bean>
+
+  <!--MyBatis 설정-->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="configLocation" value="classpath:config/mybatis-config.xml" />
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <!--트랜잭션 설정-->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource" />
+   </bean>
+
+  <tx:annotation-driven transaction-manager="transactionManager" />
+
+  <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <property name="propertyEditorRegistrars">
+      <list>
+        <bean class="common.CustomDateEditorRegistrar" />
+      </list>
+    </property>
+  </bean>
+
+  <!--사원 등록 빈-->
+  <bean id="emp01" class="common.Emp">
+    <property name="ename" value="홍길동" />
+    <property name="job" value="SALESMAN" />
+    <property name="mgr" value="7782" />
+    <property name="hiredate" value="1990-01-29" />
+    <property name="sal" value="800.00" />
+    <property name="comm">
+      <null />
+    </property>
+    <property name="deptno" value="10" />
+  </bean>
+  <bean id="emp02" class="common.Emp">
+    <property name="ename" value="김철수" />
+    <property name="job" value="CLERK" />
+    <property name="mgr" value="7844" />
+    <property name="hiredate" value="2000-11-01" />
+    <property name="sal" value="400.00" />
+    <property name="comm">
+      <null />
+    </property>
+    <property name="deptno" value="30" />
+  </bean>
+
+
+</beans>

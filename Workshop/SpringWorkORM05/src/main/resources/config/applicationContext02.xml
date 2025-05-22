@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+  <context:component-scan base-package="com.test02" />
+
+  <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <property name="propertyEditorRegistrars">
+      <list>
+        <bean class="common.CustomDateEditorRegistrar" />
+      </list>
+    </property>
+  </bean>
+
+  <!--사원 등록 빈-->
+  <bean id="emp01" class="common.Emp">
+    <property name="ename" value="홍길동" />
+    <property name="job" value="SALESMAN" />
+    <property name="mgr" value="7782" />
+    <property name="hiredate" value="1990-01-29" />
+    <property name="sal" value="800.00" />
+    <property name="comm">
+      <null />
+    </property>
+    <property name="deptno" value="10" />
+  </bean>
+  <bean id="emp02" class="common.Emp">
+    <property name="ename" value="김철수" />
+    <property name="job" value="CLERK" />
+    <property name="mgr" value="7844" />
+    <property name="hiredate" value="2000-11-01" />
+    <property name="sal" value="400.00" />
+    <property name="comm">
+      <null />
+    </property>
+    <property name="deptno" value="30" />
+  </bean>
+
+
+</beans>
