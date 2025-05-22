@@ -20,10 +20,9 @@
     </environment>
   </environments>
 
-  <!--Sql mapper 등록-->
-  <mappers>
-    <mapper resource="com/test01/goods-mapper.xml" /> <!--xml 설정 리소스-->
-<!--    <mapper class="com.test02.dao.goodsMapper"/> &lt;!&ndash;class 설정&ndash;&gt;-->
-  </mappers>
 
+  <!--Sql mapper 등록-->
+  <mappers />
+<!--    <mapper resource="com/test01/goods-mapper.xml" /> &lt;!&ndash;xml 설정 리소스&ndash;&gt;-->
+<!--    <mapper class="com.test02.dao.GoodsMapper"/> &lt;!&ndash;class 설정&ndash;&gt;-->
 </configuration>

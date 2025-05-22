@@ -31,11 +31,18 @@ public class GoodsDao {
     }
   }
 
-  // 2. 전체 출력 mybatis.goodsMapper.listgoods
+  // 2-1. 전체 출력 mybatis.goodsMapper.listgoods
   public List<GoodsVo> listGoods(){
     try(SqlSession sqlSession = sqlSessionFactory.openSession()){
       List<GoodsVo> all = sqlSession.selectList("mybatis.goodsMapper.listGoods");
       return all;
+    }
+  }
+
+  // 2-2. 단일 조회
+  public GoodsVo findGoods(String code){
+    try(SqlSession sqlSession = sqlSessionFactory.openSession()){
+      return sqlSession.selectOne("mybatis.goodsMapper.findGoods",code);
     }
   }
 
@@ -53,9 +60,9 @@ public class GoodsDao {
   }
 
   // 4. 상품정보 수정
-  public int updateGoods(String name){
+  public int updateGoods(GoodsVo vo){
     try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-      int res = sqlSession.update("mybatis.goodsMapper.updateGoods",name);
+      int res = sqlSession.update("mybatis.goodsMapper.updateGoods",vo);
       if(res > 0){
         sqlSession.commit();
       }else{
@@ -66,9 +73,9 @@ public class GoodsDao {
   }
 
   // 5. 상품 삭제(상품명으로 삭제)
-  public GoodsVo findGoods(String code){
+  public int deleteGoods(String code){
     try(SqlSession sqlSession = sqlSessionFactory.openSession()){
-      return sqlSession.selectOne("mybatis.goodsMapper.findGoods",code);
+      return sqlSession.delete("mybatis.goodsMapper.deleteGoods",code);
     }
   }
 }

@@ -11,12 +11,12 @@
   </select>
 
   <!--단일 조회-->
-  <select id="findGoods" resultType="com.test01.GoodsDao">
+  <select id="findGoods" resultType="com.test01.GoodsVo">
     select * from goodsinfo where code=#{code}
   </select>
 
   <!--insert-->
-  <insert id="insertGoods" parameterType="com.test01.GoodsDao">
+  <insert id="insertGoods" parameterType="com.test01.GoodsVo">
     insert into goodsinfo(code, name, price, maker) values (#{code},#{name},#{price},#{maker})
   </insert>
 
@@ -26,7 +26,7 @@
   </delete>
 
   <!--update-->
-  <update id="updateGoods" parameterType="com.test01.GoodsDao">
+  <update id="updateGoods" parameterType="com.test01.GoodsVo">
     update goodsinfo set code = #{code}, name=#{name}, price=#{price}, maker=#{maker}
   </update>
 </mapper>
