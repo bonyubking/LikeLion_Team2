@@ -2,6 +2,7 @@ package work05.repository;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import work05.domain.Order;
 
 @Repository
 public class OrderRepository {

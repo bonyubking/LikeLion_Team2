@@ -7,8 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ReportService {
 
-  @Autowired
   private AsyncMailService mailService;
+
+  @Autowired
+  public ReportService(AsyncMailService mailService) {
+    this.mailService = mailService;
+  }
 
   @Transactional
   public void completeReport() {

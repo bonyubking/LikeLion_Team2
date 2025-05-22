@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Order(0) // 트랜잭션보다 먼저 실행
-public class LoggingAspect {
+public class LogAspect {
 
   @Before("execution(* work05..*(..))")
   public void logStart() {

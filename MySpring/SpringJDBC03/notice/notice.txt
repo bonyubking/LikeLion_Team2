@@ -125,5 +125,8 @@ src/main/resources
 └── jdbc.properties            ← DB 연결 정보
 
 
-
+======================================================================
+com.test01 : XML 매퍼 / SqlSession 코드 직접 생성
+com.test02 : 인터페이스 매퍼 / 수동 SqlSession
+com.test03 : 인터페이스 + @Mapper/ Spring+Mybatis+Transaction / DI SqlSession
 

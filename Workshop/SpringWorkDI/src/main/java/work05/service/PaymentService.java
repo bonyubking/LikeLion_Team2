@@ -1,29 +1,19 @@
 package work05.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import work05.domain.Order;
 
 @Service
 public class PaymentService {
-
-  private final OrderRepository orderRepository;
-  private final PaymentGateway paymentGateway;
-
-  @Autowired
-  public PaymentService(OrderRepository orderRepository, PaymentGateway paymentGateway) {
-    this.orderRepository = orderRepository;
-    this.paymentGateway = paymentGateway;
-  }
-
-  @Transactional
+  @Transactional // 외부 시스템 실패 시 무시하고 DB 처리는 계속 하도록 설계
   public void processPayment(Order order){
     try {
-      paymentGateway.send(order);
-    } catch (ExternalServiceException e) {
-      log.warn("결제 시스템 응답 실패");
+      System.out.println("외부 결제 처리 중...");
+      throw new RuntimeException("결제 실패");
+    } catch (Exception e) {
+      System.out.println("예외 발생 -> 무시하고 DB 저장 진행");
     }
-    orderRepository.save(order);
+    System.out.println("DB 저장 완료");
   }
-
 }
