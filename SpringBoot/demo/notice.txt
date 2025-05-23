@@ -1,0 +1,49 @@
+
+1. 웹서버 실행 후 가이드
+  Initializing Servlet 'dispatcherServlet'
+  : @RequestMapping("/")로 웹요청을 받아 적절한 controller로 전달할 준비가 됨
+    = 초기화 성공적으로 완료됨
+
+2. WebApplicationContext -> Tomcat started on port 8080 -> DispatcherServlet
+
+3. DispatcherServlet : 웹 요청을 처리하는 Spring의 Front Controller
+  -> 톰캣이 사용자의 요청을 받으면 DispatcherServlet으로 전달됨
+  -> @RequestMapping을 찾아서 컨트롤러에게 (전달)
+  *들어오는 모든 웹요청을 가로채 어떤 컨트롤러가 요청을 처리해야 할지 결정하고, 최종 응답을 사용자에게 보내는 역할함
+
+=======================================================================================
+test03 DemoController을 새로 생성해서 MVC 패턴으로 분류
+
+test04 @RestController와 @Controller 차이 / @RestController -> @Controller 변경 후 확인
+@RestController : 반환값을 그대로 HTTP 응답 본문으로 보냄. 템플릿 사용하지 않음
+@Controller : 반환값을 뷰 이름으로 해석하고 해당 이름의 템플릿을 찾아 렌더링함
+
+
+spring-boot-starter-thymeleaf : 템플릿 엔진
+- src/main/resources/templates 을 위치 자동설정해줌
+- 템플릿 파일 확장자 기본 설정 .html
+- 컨트롤러에서 index로 리턴하는 것을 ViewResolver를 자동구성해줌
+- 컨트롤러에서 Model 객체를 통해 데이터를 뷰(HTML)로 전달할 수 있고 <th:> 태그를 지원함
+
+
+test05: org.springframework.ui.Model 객체를 확인
+  -> 컨트롤러에서 View(HTML) 데이터를 전달하기 위한 객체(웹페이지에서 동적으로 값을 표시할 때 전달용으로 사용)
+  -> addAttribute(key, value);
+@PathVariable(URL 경로 변수 바인딩)를 사용하여 값을 전달하는 과정 확인
+  -> @RequestMapping("/{num}")
+  public String index(@PathVariable int num, Model model){}
+
+
+test06: org.springframework.ui.ModelAndView
+-> 데이터도 담고, 뷰 이름도 설정해줌
+addObject("msg","sum="+sum); 데이터 담고
+setViewName("index") 뷰 이름 지정
+
+test07: GET+POST 방식으로 추가 코드 테스트
+th:text = text 대입
+th:value = > 값 대입
+
+방법 :
+GET / -> 폼 출력 -> 입력폼 리턴
+POST / -> 폼에서 숫자 입력 -> 합계 출력
+GET /10 -> URL 직접 입력 -> sum = 55

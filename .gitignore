@@ -20,6 +20,7 @@ db_properties
 Servers/
 target/
 db.properties
+application.properties
 
 # External tool builders
 .externalToolBuilders/
