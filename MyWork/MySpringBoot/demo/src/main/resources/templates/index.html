@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1> Demo Page </h1>
+		<!-- 메시지 출력 -->
+		<p th:text = "${msg}"> 여기에 메시지가 표시된다. </p>
+		<!-- 폼: 숫자 입력 후 제출-->
+		<form method="post" action="/">
+			<input type="text" name="text1" th:value="${value}">
+			<input type="submit" value="계산하기">
+		</form>
+	</body>
+</html>
+

@@ -1,0 +1,26 @@
+1. jpa, h2 injection 확인
+ 프로젝트 실행 후 브라우저에서 http://localhost:8080/h2-console DB확인
+ 
+ 2. User 클래스 추가 한다. getter, setter
+ 
+ 3. User @를 이용해서 Entitiy 생성한다. 
+ 
+ 4. UserRepository.java 생성
+ org.springframework.data.repository.JpaRepository<T,ID> 확장한 코드를 작성한다.
+ T : 엔티티 클래스 타입 User
+ ID : Pk 타입    id = int = Integer
+ 
+ 5.UserController.java 생성
+ 
+ 6.index.html 생성
+ th:object="${객체이름} : 폼의 모든 데이터를 담는 객체 
+            model.addAttribute("formModel",user);
+            
+ th:value="*{name}" : "*{속성명}" 
+       -> forModel 객체의 name필드 값을 가져온다.
+       -> formMode.getName()
+ 
+th:each="obj : ${data}" -> th:each="변수명 : ${컬렉션객체}"
+th:text="${obj.id}"
+th:text="${obj.name}"
+
