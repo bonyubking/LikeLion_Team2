@@ -1,0 +1,18 @@
+#1. 서버설정
+server:
+  port: 9000 #기본값 8080
+
+#2. spring 설정
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate: # JPA Entity에 따라 스키마가 업데이트됨
+      ddl-auto: update #none, validate, update 등의 옵션이 있음
+    show-sql: true #SQL문 출력정렬
