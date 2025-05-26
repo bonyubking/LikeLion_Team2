@@ -16,3 +16,4 @@ spring:
     hibernate: # JPA Entity에 따라 스키마가 업데이트됨
       ddl-auto: update #none, validate, update 등의 옵션이 있음
     show-sql: true #SQL문 출력정렬
+
