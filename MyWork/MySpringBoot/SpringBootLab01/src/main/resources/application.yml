@@ -1,0 +1,24 @@
+#1. 서버설정
+server:
+  port: 9000 #기본값은 (8080)
+#2. spring 관련 설정
+spring:
+#데이터 소스 연결 
+  datasource: # http://localhost:8080/h2-console/
+    url: jdbc:h2:mem:testdb 
+    driver-class-name: org.h2.Driver
+    username: sa 
+    password:
+#h2 콘솔환경
+  h2:
+    console:
+      enabled: true 
+  jpa:
+    hibernate: #JPA entity에 따라 DB 스키마가 업데이트 된다
+      ddl-auto: update #none, validate, update, create, and create-drop등의 옵션을 가진다
+    show-sql: true # SQL문 출력정렬 해줘
+
+#springdoc:
+ # use-management-port: true
+
+
