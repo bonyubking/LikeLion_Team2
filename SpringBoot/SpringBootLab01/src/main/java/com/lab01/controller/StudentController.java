@@ -20,6 +20,7 @@ public class StudentController {
 
   private final StudentService studentService;
 
+  //수정
   // 학생 전체 조회 GET/students
   @GetMapping
   public List<Student> getAllStudents(){
