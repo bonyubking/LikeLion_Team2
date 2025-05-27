@@ -28,3 +28,13 @@
 3. DispatcherServlet : 모든 요청의 진입점, 요청 위임과 흐름 (Controller 매핑) 등
   Controller에서 실행되는 값전달 리턴, MVC 로직 흐름등과 관련된 정보 객체이며 실제 컨트롤러
   실행을 해주는 객체임
+
+4. error.html -> Spring Boot에서 기본 error 페이지로 지정해서 사용됨
+
+5. 커스텀 예외처리 방법
+  1) @RestController -> @RestControllerAdvice 클래스에서 ResponseEntity 객체로 리턴하는 메소드를 예외 종류 맞게 구현
+  2) @Controller -> @ControllerAdvice 클래스에서 ModelAndView 객체로 리턴하는 메소드를 예외 종류에 맞게 구현
+  3) ErrorController 인터페이스를 상속해서 사용자 예외 클래스 선언후 이벤트로 핸들링
+      templates/error/
+                      404.html
+                      500.html
