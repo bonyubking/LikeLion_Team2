@@ -1,0 +1,30 @@
+1. org.springframework.http
+  - ResponseEntity<T> : HTTP 응답을 가진 객체, HTTP 상태 코드, 헤더, 바디 값을 제어할 수 있음
+  - http 응답을 완전제어 _200 성공, _400 실패시 구현할 수 있는 코드 커스텀
+  public RepsponseEntity<T>{
+      HttpStatus status;// 상태코드
+      HttpHeaders headers; //응답 헤더
+      T body; //응답 데이터
+  }
+
+  예시
+  @GetMapping("/hello")
+  public ResponseEntity<String> hello(){
+      String message="안녕";
+      return ResponseEntity.ok().body(message);
+  }
+
+  @GetMapping("/download")
+  public ResponseEntity<byte[]> downloadFile(){
+    byte[] filedata = ...;
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(~~~~~~);
+    return ResponseEntity.ok().header(headers).body(filedata);
+  }
+
+
+2. https://docs.spring.io/spring-framework/reference/web/webmvc.html
+
+3. DispatcherServlet : 모든 요청의 진입점, 요청 위임과 흐름 (Controller 매핑) 등
+  Controller에서 실행되는 값전달 리턴, MVC 로직 흐름등과 관련된 정보 객체이며 실제 컨트롤러
+  실행을 해주는 객체임
