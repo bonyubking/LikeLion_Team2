@@ -21,6 +21,7 @@ Servers/
 target/
 db.properties
 application.properties
+application.yml
 
 # External tool builders
 .externalToolBuilders/
