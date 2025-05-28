@@ -1,0 +1,77 @@
+1. org.springframework.http
+   - ResponseEntity<T> : HTTP 응답을 가진 객체, HTTP 상태코드, 헤더, 바디 값을 제어할 수 있다.
+   -http 응답을 완전제어 _200 성공, 400_실패시 구현할 수 있는 코드를 커스텀 
+   public ResponseEntity<T>{
+      HttpStatus status; //상태코드
+      HttpHeaders headers;
+      T body; //응답 데이터(객체,문자열,JSON 등)
+     }
+     
+      ex)
+      @GetMapping("/hello")
+       public ResponseEntity<String> hello(){
+        String message="안녕";
+        return ResponseEntity.ok().body(message);
+     }
+     // ResponseEntity(T body, MultiValueMap<String,String> headers, HttpStatusCode statusCode)
+       
+       
+      ex02)
+       @GetMapping("/download")
+         public  ResponseEntit<byte[]>  downloadFile(){
+           byte[]  filedata = = ..... ;
+           HttpHeaders  headers  = new HttpHeaders(); 
+           
+          headers.add(HttpHeaders.CONTENT_DISPOSITION ,"attachment; filename="" + file.getFilename() + """ ); 
+           return  ResponseEntity.ok().header(headers).body(filedata);
+
+         }
+   ===========================================================================
+    
+     @ExceptionHandler(MethodArgumentNotValidException.class) 
+    public ResponseEntity<String> 
+handleValidationException(MethodArgumentNotValidException ex) { 
+        String errorMessage = ex.getBindingResult() 
+                                .getAllErrors() 
+                                .get(0) 
+                                .getDefaultMessage(); 
+        return ResponseEntity 
+                .badRequest() //상태 코드값
+                .body(errorMessage); //body T
+    }
+    
+   =========================================================================== 
+   
+2. https://docs.spring.io/spring-framework/reference/web/webmvc.html
+
+3. DispatcherServlet: 모든 요청의 진입점, 요청 위임과 흐름(Controller 매핑 ) 등 
+    Controller에서 실행되는 값 전달 리턴, MVC 로직 흐름등을 관련한 정보 객체이며 실제 컨트롤러 실행을 해주는 객체이다.
+
+4. /src/main/resources/templates/error.html -> Spring Boot에서 기본 error 페이지로 지정해서 사용된다
+없을 경우는 위치에서 가상생성해서 리턴 / 명시하면 명시된 페이지로 매핑 
+
+5. 커스텀 예외 처리 방법 
+  1) [강력추천] @RestController -> @RestControllerAdvice 클래스에서 ResponseEntity 객체로 리턴하는 메소드를 예외 종류에 맞게 구현
+  2) @Controller -> @ControllerAdvice 클래스에서 ModelAndView 객체로 리턴하는 메소드를 예외 종류에 맞게 구현
+  
+  3) [강력추천] @Controller등과 함께 ErrorController 인터페이스를 implements해서 사용자 예외 클래스로 선언한 후 이벤트로 핸들링  
+  
+   /src/main/resources/templates/error
+                                      404.html //각각처리
+                                      500.html 
+
+    org.springframework.boot.web.servlet.error.ErrorController
+
+
+
+
+
+
+
+
+
+
+
+
+
+
