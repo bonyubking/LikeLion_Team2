@@ -1,0 +1,26 @@
+package com.lab05.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.aspectj.lang.annotation.Aspect;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Emp {
+
+  @Id
+  private int empno;
+  private String ename;
+  private String job;
+  private int sal;
+  @ManyToOne
+  @JoinColumn(name="deptno")
+  private Dept dept;
+}
